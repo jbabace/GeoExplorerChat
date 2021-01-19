@@ -43,8 +43,8 @@ class SocketClientState extends State<SocketClient> {
   TextEditingController msgCon = TextEditingController();
 
   Socket socket;
-  var alias = 'soymovil';
-  var logincontroller = TextEditingController(text: 'soymovil');
+  String alias = 'Babace';
+  var logincontroller = TextEditingController(text: 'Babace');
 
   @override
   void initState() {

@@ -1,4 +1,4 @@
-package PruebaJava;
+package Chats.PruebaJava;
 
 import java.io.IOException;
 import java.net.Socket;

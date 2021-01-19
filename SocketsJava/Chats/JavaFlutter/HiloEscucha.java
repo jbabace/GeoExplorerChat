@@ -1,4 +1,4 @@
-package JavaFlutter;
+package Chats.JavaFlutter;
 
 public class HiloEscucha {
 }

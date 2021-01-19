@@ -1,4 +1,4 @@
-package PruebaJava;
+package Chats.PruebaJava;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;

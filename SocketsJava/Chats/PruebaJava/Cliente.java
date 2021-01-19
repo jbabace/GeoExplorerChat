@@ -1,4 +1,4 @@
-package PruebaJava;
+package Chats.PruebaJava;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
