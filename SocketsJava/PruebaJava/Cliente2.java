@@ -1,18 +1,18 @@
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
+package PruebaJava;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
-public class Cliente {
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+
+public class Cliente2 {
 private String nick;
-public Cliente(String nick) {
+public Cliente2(String nick) {
 	this.nick=nick;
 }
 public static void main(String[]args) throws UnknownHostException, IOException, ParseException, ClassNotFoundException{

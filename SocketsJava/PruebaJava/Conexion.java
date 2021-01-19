@@ -1,11 +1,13 @@
+package PruebaJava;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Conexion
 {
-    private final int PUERTO = 8000; //Puerto para la conexión
-    private final String HOST = "localhost"; //Host para la conexión
+    private final int PUERTO = 8000; //Puerto para la conexiï¿½n
+    private final String HOST = "localhost"; //Host para la conexiï¿½n
     protected String mensajeServidor,mensajeCliente; //Mensajes entrantes (recibidos) en el servidor
     static ServerSocket ss; //Socket del servidor
     static Socket cs; //Socket del cliente
