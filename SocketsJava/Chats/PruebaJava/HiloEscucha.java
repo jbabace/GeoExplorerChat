@@ -18,7 +18,7 @@ public class HiloEscucha extends Thread {
     private Socket s;
 	private BufferedReader bf;
 	private String nick;
-     public String getNick() {
+	public String getNick() {
 		return nick;
 	}
 	public void setNick(String nick) {

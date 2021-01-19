@@ -63,7 +63,7 @@ public static void main(String[]args) throws IOException, ParseException, ClassN
 		System.out.print("Servidor escuchando\n");
 		while(true) {
 			Socket s = serverSocket.accept();
-			HiloLogeo hilo= new HiloLogeo(s,"guest");
+			HiloLogeo hilo= new HiloLogeo(s,"anonimo");
 			hilo.start();
 			clientes.add(hilo);
 		}

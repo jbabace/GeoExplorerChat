@@ -16,7 +16,7 @@ public Cliente(String nick) {
 	this.nick=nick;
 }
 public static void main(String[]args) throws UnknownHostException, IOException, ParseException, ClassNotFoundException{
-	 Socket s = new Socket("localhost", 3001);
+	 Socket s = new Socket("localhost", 1234);
 	 BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
 	 Scanner sc = new Scanner(System.in);
 	 boolean logueado=false;
