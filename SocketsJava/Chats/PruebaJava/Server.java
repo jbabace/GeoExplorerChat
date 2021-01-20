@@ -13,59 +13,67 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class Server{
-	 static ArrayList<HiloLogeo> clientes = new ArrayList<HiloLogeo>();
+public class Server {
+	static ArrayList<HiloLogeo> clientes = new ArrayList<HiloLogeo>();
 
 	public static String meterUser(Socket s) throws IOException, ParseException {
-		while(true) {
+		while (true) {
 			BufferedReader bf = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			String linea;
-			while((linea=bf.readLine())!=null) {
+			while ((linea = bf.readLine()) != null) {
 				JSONObject jsonobject = new JSONObject();
 				JSONParser jsonParser = new JSONParser();
-				jsonobject= (JSONObject) jsonParser.parse(linea);
+				jsonobject = (JSONObject) jsonParser.parse(linea);
 				System.out.println(jsonobject);
 				return (String) jsonobject.get("user");
 			}
 		}
 	}
-	public static void eliminarUser(Socket s,JSONObject json) {
-		for(HiloLogeo c : clientes) {
-			if(c.getS() == s) {
-				clientes.remove(c);
+
+	public static void eliminarUser(Socket s, JSONObject json) {
+		for (HiloLogeo c : clientes) {
+			System.out.println(c.getS() + " <---> " + s);
+			if (c.getS() == s) {
+				c.interrupt();
+				//clientes.remove(c);
 			}
 		}
 		System.out.println(json);
 	}
-	public static void broadcast(Socket cliente,JSONObject msg) throws IOException{
-		for(HiloLogeo ss: clientes){
+
+	public static void broadcast(Socket cliente, JSONObject msg) throws IOException {
+		for (HiloLogeo ss : clientes) {
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(ss.getS().getOutputStream()));
 			//if(ss.getS()!=cliente) {
-				bw.write(msg + "\n");
-				bw.flush();
+			bw.write(msg + "\n");
+			bw.flush();
 			//}
 		}
 		System.out.println(msg);
 	}
-	public static void directMsg(Socket cliente , JSONObject msg) throws IOException{
-		for(HiloLogeo ss: clientes){
+
+	public static void directMsg(Socket cliente, JSONObject msg) throws IOException {
+		for (HiloLogeo ss : clientes) {
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(ss.getS().getOutputStream()));
 			//System.out.println(ss.getNick() + "Parametro: " + nick);
-			if((ss.getNick().equalsIgnoreCase((String) msg.get("to")))){
+			if ((ss.getNick().equalsIgnoreCase((String) msg.get("to")))) {
 				bw.write(msg + "\n");
 				bw.flush();
 			}
 		}
 		System.out.print(msg);
 	}
-public static void main(String[]args) throws IOException, ParseException, ClassNotFoundException{
+
+	public static void main(String[] args) throws IOException, ParseException, ClassNotFoundException {
 		ServerSocket serverSocket = new ServerSocket(3001);
 		System.out.print("Servidor escuchando\n");
-		while(true) {
+		while (true) {
 			Socket s = serverSocket.accept();
-			HiloLogeo hilo= new HiloLogeo(s,"anonimo");
+			HiloLogeo hilo = new HiloLogeo(s, "anonimo");
 			hilo.start();
 			clientes.add(hilo);
 		}
+	}
 }
-}
+
+

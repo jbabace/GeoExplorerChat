@@ -25,7 +25,9 @@ public class HiloEscucha extends Thread {
 		this.nick = nick;
 	}
 	public HiloEscucha(Socket s,String nick) throws IOException, ParseException, ClassNotFoundException{
-    	 this.bf=new BufferedReader(new InputStreamReader(s.getInputStream()));
+		this.s = s;
+		this.nick = nick;
+		this.bf=new BufferedReader(new InputStreamReader(s.getInputStream()));
      }
     @Override
     public void run(){
@@ -40,7 +42,8 @@ public class HiloEscucha extends Thread {
 					e.printStackTrace();
 				}
 				if(jsonobject.get("action").equals("logout")) {
-					Server.eliminarUser(s, jsonobject);
+					System.out.println(this.s + " <-- Socket");
+					Server.eliminarUser(this.s, jsonobject);
 				}else if(jsonobject.get("to").equals("todos")){
 					Server.broadcast(s,jsonobject);
 				}else{

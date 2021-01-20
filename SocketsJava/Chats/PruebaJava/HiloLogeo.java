@@ -8,11 +8,13 @@ import org.json.simple.parser.ParseException;
 public class HiloLogeo extends Thread {
 	private Socket s;
 	private String nick;
+
 	HiloLogeo(Socket s,String nick){
 		this.s=s;
 		this.nick=nick;
 	}
-	 public Socket getS() {
+
+	public Socket getS() {
 		return s;
 	}
 	public void setS(Socket s) {
@@ -24,6 +26,7 @@ public class HiloLogeo extends Thread {
 	public void setNick(String nick){
 		this.nick=nick;
 	}
+
 	@Override
 	    public void run(){
 		 HiloEscucha hiloescucha = null;
