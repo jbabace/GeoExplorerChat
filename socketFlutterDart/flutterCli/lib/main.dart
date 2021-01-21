@@ -36,7 +36,7 @@ class SocketClientState extends State<SocketClient> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   String localIP = "";
-  int port = 3001;
+  int port = 1234;
   List<MessageItem> items = List<MessageItem>();
 
   TextEditingController ipCon = TextEditingController();

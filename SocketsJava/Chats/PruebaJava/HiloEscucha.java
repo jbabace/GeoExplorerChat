@@ -42,7 +42,6 @@ public class HiloEscucha extends Thread {
 					e.printStackTrace();
 				}
 				if(jsonobject.get("action").equals("logout")) {
-					System.out.println(this.s + " <-- Socket");
 					Server.eliminarUser(this.s, jsonobject);
 				}else if(jsonobject.get("to").equals("todos")){
 					Server.broadcast(s,jsonobject);

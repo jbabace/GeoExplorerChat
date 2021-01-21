@@ -101,7 +101,6 @@ public class Cliente {
 		*/
 
 		sc.close();
-		s.close();
 
 		} catch (ConnectException ce){
 			System.out.println("El cliente no se pudo conectar al server");

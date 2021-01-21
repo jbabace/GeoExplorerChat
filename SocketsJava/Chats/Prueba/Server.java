@@ -90,7 +90,7 @@ public class Server{
 
 	public static void eliminarUserDesconectado() {
 		for(HiloLogeo c: clientes) {
-			System.out.println(c.getS().i);
+			System.out.println(c.getS());
 			if(!c.getS().isConnected()){
 				clientes.remove(c);
 				System.out.println("Eliminado socket");

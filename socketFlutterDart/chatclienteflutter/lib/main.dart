@@ -9,9 +9,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Chat Flutter',
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Chat'),
+          title: Center(
+            child: Text('CHAT')
+          ),
         ),
         body: Chat(),
       ),
