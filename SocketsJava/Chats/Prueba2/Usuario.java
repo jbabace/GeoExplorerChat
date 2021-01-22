@@ -23,7 +23,7 @@ public class Usuario {
             String nick = "Babace";
 
             //cogemos la ruta al que pertenece de la bd
-            String ruta = "Ruta X";
+            String ruta = "Ruta Y";
 
             JSONObject loginUsuario = new JSONObject();
 
