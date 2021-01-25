@@ -23,6 +23,7 @@ public class Servidor {
             //aceptamos conexiones
             while (true) {
                 Socket socketUsuario = serverSocket.accept();
+                System.out.println("Cliente conectado");
 
                 //ejecutar el hilo de logeo
                 HiloLogeo hilo = new HiloLogeo(socketUsuario, "nick", "ruta");
@@ -50,12 +51,12 @@ public class Servidor {
             }
         } catch (SocketException se) {
             //se.printStackTrace();
-            System.out.println("Error en servidor conexion cliente-servidor");
+            System.out.println("Error en servidor conexion cliente-servidor, en servidor");
         } catch (IOException ioe) {
-            ioe.printStackTrace();
+            //ioe.printStackTrace();
             System.out.println("Error en servidor");
         } catch (ParseException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             System.out.println("Error en servidor, parseo del JSON");
         }
 
@@ -67,6 +68,7 @@ public class Servidor {
 
         for(HiloLogeo user: usuarios){
             Socket s = user.getSocket();
+            System.out.println("Cliente conectado");
             //if(cliente != s)
 
             BufferedWriter bfw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
