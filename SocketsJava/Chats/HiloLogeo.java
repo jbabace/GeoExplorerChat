@@ -1,4 +1,4 @@
-package Chats.Prueba2;
+package Chats;
 
 import org.json.simple.JSONObject;
 
