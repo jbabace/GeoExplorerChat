@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:chatclienteflutter/src/modelChat/message.dart';
 
-import 'package:get_ip/get_ip.dart';
-
 import 'dart:convert';
 import 'dart:io';
 
@@ -16,8 +14,10 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
 
   //datos del servidor del chat
-  String localIP = "10.10.12.115";
-  int port = 1234;
+  //String localIP = "10.10.12.115";
+  String localIP = "13.95.106.247";
+  //int port = 1234;
+  int port = 443;
 
   //el controlador para los mensajes
   TextEditingController messageController = TextEditingController();
@@ -61,6 +61,9 @@ class _ChatState extends State<Chat> {
         socketChat.listen(
           (data) => escucharServer(utf8.decode(data)),
         );
+        setState(() {
+          
+        });
       } 
     );
   }
@@ -150,6 +153,7 @@ class _ChatState extends State<Chat> {
   }
 
   void submitMessage() {
+    print(messageController.text);
     if (messageController.text.isNotEmpty){
       var msg = messageController.text;
       messageController.clear();
