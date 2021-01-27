@@ -52,8 +52,9 @@ public class HiloEscucha extends Thread{
                 JSONParser parseador = new JSONParser();
                 JSONObject objetoJSON = (JSONObject) parseador.parse(linea);
 
-                if (objetoJSON.get("action").equals("logout")){
+                if (objetoJSON.get("action").equals("logout")) {
                     System.out.println("Accion de deslogeo");
+                    Servidor.logout(this.socket);
                 } else {
                     Servidor.enviarMsg(this.socket, objetoJSON);
                 }

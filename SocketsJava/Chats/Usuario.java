@@ -57,11 +57,17 @@ public class Usuario {
                     bfw.flush();
                 } else {
                     System.out.println("Desconectando");
+
+                    JSONObject jsonMensaje = new JSONObject();
+                    jsonMensaje.put("action", "logout");
+                    jsonMensaje.put("user", nick);
+                    jsonMensaje.put("route", ruta);
+
+                    bfw.write(jsonMensaje + "\n");
+                    bfw.flush();
                     break;
                 }
             }
-
-            sc.close();
 
         } catch (IOException e) {
             e.printStackTrace();

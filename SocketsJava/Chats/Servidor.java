@@ -86,4 +86,21 @@ public class Servidor {
         System.out.println(mensaje);
     }
 
+    public static void logout(Socket socket) {
+        for(HiloLogeo user: usuarios){
+            Socket s = user.getSocket();
+            if (socket == s){
+                user.interrupt();
+                usuarios.remove(user);
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    System.out.println("Usuario deslogueado");
+                }
+                break;
+            }
+        }
+    }
+
+
 }
