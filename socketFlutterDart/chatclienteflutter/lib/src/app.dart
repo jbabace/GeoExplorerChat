@@ -14,10 +14,10 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
 
   //datos del servidor del chat
-  //String localIP = "10.10.12.115";
-  String localIP = "13.95.106.247";
-  //int port = 1234;
-  int port = 443;
+  String localIP = "10.10.12.183";
+  //String localIP = "13.95.106.247";
+  int port = 1234;
+  //int port = 443;
 
   //el controlador para los mensajes
   TextEditingController messageController = TextEditingController();
@@ -165,7 +165,7 @@ class _ChatState extends State<Chat> {
       var chatMsg = Map();
 
       chatMsg["action"] = "msg";
-      chatMsg["user"] = nick;
+      chatMsg["from"] = nick;
       chatMsg["route"] = ruta;
       chatMsg["value"] = msg;
 
