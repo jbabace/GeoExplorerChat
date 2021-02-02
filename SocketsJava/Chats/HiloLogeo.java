@@ -2,6 +2,7 @@ package Chats;
 
 import org.json.simple.JSONObject;
 
+import java.io.IOException;
 import java.net.Socket;
 
 public class HiloLogeo extends Thread{
@@ -36,6 +37,18 @@ public class HiloLogeo extends Thread{
         this.ruta = (String) user.get("route");
 
         System.out.println("Usuario reconocido");
+
+        JSONObject jsonMensaje = new JSONObject();
+        jsonMensaje.put("action", "msg");
+        jsonMensaje.put("value", "Se ha conectado el usuario " + nick + ".");
+        jsonMensaje.put("route", ruta);
+        jsonMensaje.put("from", "server");
+
+        try {
+            Servidor.enviarMsgServer(jsonMensaje);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //creamos el hilo de escucha
         HiloEscucha hilo = new HiloEscucha(this.socket, this.nick, this.ruta);

@@ -55,6 +55,8 @@ public class HiloEscucha extends Thread{
                 if (objetoJSON.get("action").equals("logout")) {
                     System.out.println("Accion de deslogeo");
                     Servidor.logout(this.socket);
+                } else if (objetoJSON.get("from").equals("server")){
+                    Servidor.enviarMsgServer(objetoJSON);
                 } else {
                     Servidor.enviarMsg(this.socket, objetoJSON);
                 }

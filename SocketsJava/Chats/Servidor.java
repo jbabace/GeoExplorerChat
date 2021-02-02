@@ -86,6 +86,28 @@ public class Servidor {
         System.out.println(mensaje);
     }
 
+    //enviemos un mensaje del servidor a los usuarios
+    public static void enviarMsgServer(JSONObject mensaje) throws IOException {
+
+        for(HiloLogeo user: usuarios){
+            Socket s = user.getSocket();
+            System.out.println("Cliente conectado");
+            //if(cliente != s)
+
+            BufferedWriter bfw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+            //No se va a enviar el mensaje a si mismo
+            //bfw.write(mensaje + "\n");
+            //bfw.flush();
+            //si el usuario es de la misma ruta del mensaje, se le envia
+            if(user.getRuta().equals(mensaje.get("route"))){
+                bfw.write(mensaje + "\n");
+                bfw.flush();
+            }
+        
+        }
+        System.out.println(mensaje);
+    }
+
     public static void logout(Socket socket) {
         for(HiloLogeo user: usuarios){
             Socket s = user.getSocket();
